@@ -5,7 +5,6 @@ var config = {
     authDomain: "acbihm-train-scheduler.firebaseapp.com",
     databaseURL: "https://acbihm-train-scheduler.firebaseio.com",
     storageBucket: "acbihm-train-scheduler.appspot.com",
-    messagingSenderId: "96078844047"
 
 };
 firebase.initializeApp(config);
