@@ -9,3 +9,46 @@ var config = {
 };
 firebase.initializeApp(config);
 
+var database = firebase.database();
+
+var connectionsRef = database.ref("/connections");
+var connectedRef = database.ref(".info/connected");
+connectedRef.on("value", function (snap) {
+
+    if (snap.val()) {
+        var con = connectionsRef.push(true);
+        con.onDisconnect().remove();
+    }
+});
+
+$("#submit-train").on("click", function (event) {
+    event.preventDefault();
+    var trainName = $("#train-name-input").val().trim();
+    var destination = $("#destination-input").val().trim();
+    var firstTrain = $("#first-train-input").val().trim();
+    var frequency = $("#frequency-input").val().trim();
+console.log(firstTrain);
+
+    var addingTrain = {
+        name: trainName,
+        destination: destination,
+        firstTrain: firstTrain,
+        frequency: frequency
+    };
+
+    alert(addingTrain);
+    trainData.ref().push(addingTrain);
+
+    $("#train-name-input").val("");
+    $("#destination-input").val("");
+    $("#first-train-input").val("");
+    $("#frequency-input").val("");
+});
+
+$("#clear-fields").on("click", function (event) {
+    event.preventDefault();
+    $("#train-name-input").val("");
+    $("#destination-input").val("");
+    $("#first-train-input").val("");
+    $("#frequency-input").val("");
+});
