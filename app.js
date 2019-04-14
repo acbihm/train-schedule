@@ -37,7 +37,7 @@ console.log(firstTrain);
     };
 
     alert(addingTrain);
-    trainData.ref().push(addingTrain);
+    trainDataTest.ref().push(addingTrain);
 
     $("#train-name-input").val("");
     $("#destination-input").val("");
@@ -52,3 +52,4 @@ $("#clear-fields").on("click", function (event) {
     $("#first-train-input").val("");
     $("#frequency-input").val("");
 });
+
